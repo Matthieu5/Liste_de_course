@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<% @les_rayons.each do |le_rayon| %>
+  <% if le_rayon.id == @item2.rayon_id %>
+    <h1><%= le_rayon.libelle %></h1>
+  <% end %>
+<% end %>
+</br>
+<p>
+  <strong>Nom :</strong>
+  <%= @item2.libelle %>
+</p>
+
+<p>
+  <strong>Quantite :</strong>
+  <%= @item2.quantite %>
+</p>
+
+<p>
+  <strong>Deja achete :</strong>
+  <% if @item2.deja_achete == false %>
+    ✘
+  <% else %>
+    ✔
+  <% end %>
+</p>
+
+</br>
+<%= link_to 'Modifier', edit_item2_path(@item2) %> |
+<%= link_to 'Retour', item2s_path %>

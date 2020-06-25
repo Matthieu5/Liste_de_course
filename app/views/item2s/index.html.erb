@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Liste des produits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nom :</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @item2s.each do |item2| %>
+      <tr>
+        <td><%= item2.libelle %></td>
+        <td><%= link_to 'Informations', item2 %></td>
+        <td><%= link_to 'Modifier', edit_item2_path(item2) %></td>
+        <td><%= link_to 'Supprimer', item2, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Ajouter un produit', new_item2_path %>
+</br>
+<a href="/rayons">Liste des rayons</a>

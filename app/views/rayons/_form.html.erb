@@ -1,0 +1,42 @@
+<%= form_with(model: rayon, local: true) do |form| %>
+  <% if rayon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rayon.errors.count, "error") %> prohibited this rayon from being saved:</h2>
+
+      <ul>
+        <% rayon.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form_for @rayon do |rayon_form| %>
+      <label for='rayon_item2s_attributes_0_libelle'>
+        Rayon:
+      </label>
+
+      <%= rayon_form.text_field :libelle %>
+    
+      <fieldset>
+        <legend>Produits</legend>
+
+        <%= rayon_form.fields_for :item2s do |item2| %>
+          <div>
+            Nom: <%= item2.text_field :libelle %>
+            Quantité: <%= item2.number_field :quantite %>
+            Deja acheté [(t)rue or (f)alse]: <%= item2.text_field :deja_achete %>
+
+            Supprimer: <%= item2.check_box :_destroy %>
+          </div>
+        <% end %>
+      </fieldset>
+    <% end %>
+    </form>
+
+  </br>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

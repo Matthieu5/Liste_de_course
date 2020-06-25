@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @rayon.libelle %></h1>
+</br>
+<p>
+  <strong>Nom :</strong>
+  <%= @rayon.libelle %>
+</p>
+
+<% @les_item2s.each do |le_item2| %>
+  <% if le_item2.rayon_id == @le_rayon.id %>
+    <p><%= le_item2.libelle %></p>
+  <% end %>
+<% end %>
+
+</br>
+<%= link_to 'Modifier', edit_rayon_path(@rayon) %> |
+<%= link_to 'Retour', rayons_path %>

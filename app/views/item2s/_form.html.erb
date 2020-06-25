@@ -1,0 +1,42 @@
+<%= form_with(model: item2, local: true) do |form| %>
+  <% if item2.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item2.errors.count, "error") %> prohibited this item2 from being saved:</h2>
+
+      <ul>
+        <% item2.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :libelle %>
+    <%= form.text_field :libelle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantite %>
+    <%= form.number_field :quantite %>
+  </div>
+
+  <div class="field">
+    <%= form.label :deja_achete %>
+    <%= form.check_box :deja_achete %>
+  </div>
+
+  <div class="field">
+  <label id="rayon_id">Nom du rayon: </label>
+  <select name="rayon_id">
+    <% @les_rayons.each do |rayon| %>
+      <option value="<%= rayon.id %>"><%= rayon.libelle %></option>
+    <% end %>
+  </select>
+</div>
+
+</br>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
