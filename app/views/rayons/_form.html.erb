@@ -24,9 +24,9 @@
 
         <%= rayon_form.fields_for :item2s do |item2| %>
           <div>
-            Nom: <%= item2.text_field :libelle %>
+            Nom: <%= item2.text_field :libelle, autofocus: item2.object.libelle.nil? %>
             Quantité: <%= item2.number_field :quantite %>
-            Deja acheté [(t)rue or (f)alse]: <%= item2.text_field :deja_achete %>
+            Deja acheté: <%= item2.check_box :deja_achete, {}, true, false %>
 
             Supprimer: <%= item2.check_box :_destroy %>
           </div>
@@ -34,7 +34,7 @@
       </fieldset>
     <% end %>
     </form>
-
+  
   </br>
   <div class="actions">
     <%= form.submit %>

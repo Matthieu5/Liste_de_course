@@ -5,6 +5,7 @@ class Item2sController < ApplicationController
   # GET /item2s.json
   def index
     @item2s = Item2.all
+    @rayons = Rayon.all
   end
 
   # GET /item2s/1

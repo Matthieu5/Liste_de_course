@@ -22,6 +22,7 @@ class RayonsController < ApplicationController
 
   # GET /rayons/1/edit
   def edit
+    @rayon.item2s.new
   end
 
   # POST /rayons
@@ -45,7 +46,7 @@ class RayonsController < ApplicationController
   def update
     respond_to do |format|
       if @rayon.update(rayon_params)
-        format.html { redirect_to @rayon, notice: 'Rayon was successfully updated.' }
+        format.html { redirect_to edit_rayon_path(@rayon), notice: 'Rayon was successfully updated.' }
         format.json { render :show, status: :ok, location: @rayon }
       else
         format.html { render :edit }
@@ -72,6 +73,6 @@ class RayonsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def rayon_params
-      params.require(:rayon).permit(:libelle, item2s_attributes:[:id, :libelle, :quantite, :deja_achete])
+      params.require(:rayon).permit(:libelle, item2s_attributes:[:id, :libelle, :quantite, :deja_achete, :_destroy])
     end
 end
